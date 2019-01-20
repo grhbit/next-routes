@@ -77,7 +77,7 @@ class Routes {
 
       if (route) {
         if (customHandler) {
-          customHandler({ req, res, route, query })
+          customHandler(req, res, route, query)
         } else {
           app.render(req, res, route.page, query)
         }

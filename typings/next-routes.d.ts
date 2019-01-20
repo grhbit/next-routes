@@ -36,7 +36,7 @@ export interface Router extends SingletonRouter {
 }
 
 export interface Registry {
-  getRequestHandler(app: Server, custom?: HTTPHandler): HTTPHandler;
+  getRequestHandler(app: Server, customHandler?: Server["render"]): HTTPHandler;
   add(name: string, pattern?: string, page?: string): this;
   add(pattern: string, page: string): this;
   add(options: { name: string; pattern?: string; page?: string }): this;
@@ -49,7 +49,7 @@ export class Routes implements Registry {
     Link?: NextLink,
     Router?: SingletonRouter
   }): Routes;
-  getRequestHandler(app: Server, custom?: HTTPHandler): HTTPHandler;
+  getRequestHandler(app: Server, customHandler?: Server["render"]): HTTPHandler;
   add(name: string, pattern?: string, page?: string): this;
   add(pattern: string, page: string): this;
   add(options: { name: string; pattern?: string; page?: string }): this;

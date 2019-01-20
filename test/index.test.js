@@ -129,9 +129,8 @@ describe('Request handler', () => {
     const { routes, app, req, res } = setup('/a')
     const { route, query } = routes.add('a').match('/a')
     const customHandler = jest.fn()
-    const expected = expect.objectContaining({ req, res, route, query })
     routes.getRequestHandler(app, customHandler)(req, res)
-    expect(customHandler).toBeCalledWith(expected)
+    expect(customHandler).toBeCalledWith(req, res, route, query)
   })
 
   test('find no route and call next handler', () => {
